@@ -9,4 +9,7 @@
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tag') }}"><i class="nav-icon la la-tag"></i> Tags</a></li>
     </ul>
 </li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('media') }}'><i class='nav-icon la la-images'></i> Media</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cog'></i> <span>Settings</span></a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('media') }}'><i class='nav-icon la la-question'></i> Media</a></li>

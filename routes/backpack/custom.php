@@ -14,4 +14,12 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+    Route::middleware('optimizeImages')->group(function () {
+        Route::post('/file/upload', 'AdminController@uploadFile')->name('backpack.upload');
+    });
+    Route::get('/medias', 'AdminController@getMedia')->name('backpack.media');
+    Route::patch('/media/{media}', 'AdminController@postCaption')->name('backpack.media');
+    Route::get('/article/trash', 'ArticleCrudController@getTrashedArticle')->name('backpack.article');
+    Route::post('/medias', 'AdminController@deleteMedia')->name('backpack.media.delete');
+    Route::crud('media', 'MediaCrudController');
 }); // this should be the absolute last line of this file
