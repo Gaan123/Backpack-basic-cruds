@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 @include('crud::fields.inc.wrapper_start')
-<div @include('crud::fields.inc.attributes')>
+<div @include('crud::fields.inc.attributes') style="height:auto">
     @php($multiple=isset($field['multiple'])?$field['multiple']:false)
     @php($imageType =isset($field['image_type'])?$field['image_type']:'featured')
     <?php
@@ -8,11 +8,12 @@
     if(isset($entry)&&count($entry->getMedia($imageType))){
         $md=$entry->getMedia($imageType)->map(function($m){
             return [
-                'path' => $m->getUrl(),
+                'path' => asset('storage/'.$m->getDiskPath()),
                 'filename' => $m->filename,
                 'id' => $m->id
             ];
         })->toArray();
+
     }
 
 
@@ -33,6 +34,12 @@
     <style>
         .modal-backdrop {
             z-index: -1;
+        }
+        .selected-thumbnail{
+            width: 300px;
+        }
+        .custom-control-label .thumbnail{
+            width: 150px;
         }
     </style>
 @endpush
